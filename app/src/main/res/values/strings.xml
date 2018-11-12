@@ -3,4 +3,5 @@
     <string name="random_joke">Random Joke</string>
     <string name="never_ending_jokes">Never-Ending Jokes</string>
     <string name="text_input">Text Input</string>
+    <string name="button_ok">OK</string>
 </resources>

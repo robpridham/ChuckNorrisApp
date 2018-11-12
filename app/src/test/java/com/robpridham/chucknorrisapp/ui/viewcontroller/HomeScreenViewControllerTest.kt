@@ -69,4 +69,8 @@ class HomeScreenViewControllerTest {
 
         verify(mockDialogCreationCallback, never()).invoke(any())
     }
+
+    //TODO: test button is disabled whilst request is active
+
+    //TODO: test button is re-enabled once request succeeds or fails
 }
