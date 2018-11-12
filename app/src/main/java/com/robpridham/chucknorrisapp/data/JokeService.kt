@@ -18,7 +18,7 @@ class ChuckNorrisJokeService(
     override fun getRandomJoke(onResult: (Result<SingleJoke, Error>) -> Unit) {
         val url = "${LocalConfig.CN_SERVER_PRIMARY_URL}${LocalConfig.CN_RANDOM_JOKES_ENDPOINT}"
 
-        networkService.getResponse(url) {
+        networkService.getRequest(url) {
             when (it) {
                 is Success -> parseSingleJoke(it.payload, onResult)
                 is Failure -> onResult(Failure(Error()))

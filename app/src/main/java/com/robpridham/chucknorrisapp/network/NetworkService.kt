@@ -8,12 +8,12 @@ import okhttp3.*
 import java.io.IOException
 
 interface NetworkService {
-    fun getResponse(url: String, onResult: (Result<String, Error>)->Unit)
+    fun getRequest(url: String, onResult: (Result<String, Error>)->Unit)
 }
 
 class OkHttpNetworkService(private val okHttpClient: OkHttpClient, private val handler: Handler): NetworkService {
 
-    override fun getResponse(url: String, onResult: (Result<String, Error>)->Unit) {
+    override fun getRequest(url: String, onResult: (Result<String, Error>)->Unit) {
         val request = Request.Builder().url(url).build()
 
         okHttpClient.newCall(request).enqueue(object : Callback {
