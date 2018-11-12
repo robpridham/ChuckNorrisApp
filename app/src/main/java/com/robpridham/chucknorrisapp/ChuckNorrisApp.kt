@@ -8,6 +8,6 @@ class ChuckNorrisApp: Application() {
 
     private val serviceContainer = ServiceContainer(Handler())
 
-    //TODO: expose via activity/fragment-scoped binding
+    //TODO: only expose via activity/fragment-scoped binding
     val viewModelFactory = CNViewModelProviderFactory(serviceContainer)
 }
