@@ -14,6 +14,10 @@ import com.robpridham.chucknorrisapp.ui.viewmodel.HomeScreenViewModel
 
 class MainFragment: Fragment() {
 
+    companion object {
+        private const val DIALOG_TAG_RANDOM_JOKE = "rj-dialog"
+    }
+
     private lateinit var controller: HomeScreenViewController
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -33,7 +37,7 @@ class MainFragment: Fragment() {
     private fun showRandomJokeDialogFragment(joke: Joke) {
         fragmentManager?.let { fMgr ->
             val ft = fMgr.beginTransaction()
-            val prev = fMgr.findFragmentByTag("rj-dialog")
+            val prev = fMgr.findFragmentByTag(DIALOG_TAG_RANDOM_JOKE)
             if (prev != null) {
                 ft.remove(prev)
             }
@@ -43,7 +47,7 @@ class MainFragment: Fragment() {
             val bundle = Bundle()
             bundle.putParcelable(RandomJokeDialogFragment.BUNDLE_KEY_JOKE, joke)
             dialogFragment.arguments = bundle
-            dialogFragment.show(ft, "rj-dialog")
+            dialogFragment.show(ft, DIALOG_TAG_RANDOM_JOKE)
         }
     }
 }
