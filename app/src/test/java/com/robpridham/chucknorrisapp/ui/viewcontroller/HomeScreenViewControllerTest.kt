@@ -18,6 +18,7 @@ class HomeScreenViewControllerTest {
     @Mock private lateinit var mockHomeView: HomeScreenView
     @Mock private lateinit var mockViewModel: HomeScreenViewModel
     @Mock private lateinit var mockDialogCreationCallback: (Joke)->Unit
+    @Mock private lateinit var mockTextFragmentCreationCallback: ()->Unit
 
     @Before
     fun setup() {
@@ -26,7 +27,7 @@ class HomeScreenViewControllerTest {
 
     @Test
     fun `on click of random joke produces fetch request to view model`() {
-        HomeScreenViewController(mockViewModel, mockHomeView, mockDialogCreationCallback)
+        HomeScreenViewController(mockViewModel, mockHomeView, mockDialogCreationCallback, mockTextFragmentCreationCallback)
         verify(mockViewModel, never()).requestRandomJoke(any())
 
         val captor = argumentCaptor<()->Unit>()
@@ -38,7 +39,7 @@ class HomeScreenViewControllerTest {
 
     @Test
     fun `success of VM fetch request produces dialog callback`() {
-        HomeScreenViewController(mockViewModel, mockHomeView, mockDialogCreationCallback)
+        HomeScreenViewController(mockViewModel, mockHomeView, mockDialogCreationCallback, mockTextFragmentCreationCallback)
         val viewClickCaptor = argumentCaptor<()->Unit>()
         verify(mockHomeView).setOnRandomJokeButtonPressed(viewClickCaptor.capture())
 
@@ -57,7 +58,7 @@ class HomeScreenViewControllerTest {
 
     @Test
     fun `failure of VM fetch request produces no dialog callback`() {
-        HomeScreenViewController(mockViewModel, mockHomeView, mockDialogCreationCallback)
+        HomeScreenViewController(mockViewModel, mockHomeView, mockDialogCreationCallback, mockTextFragmentCreationCallback)
         val viewClickCaptor = argumentCaptor<()->Unit>()
         verify(mockHomeView).setOnRandomJokeButtonPressed(viewClickCaptor.capture())
 

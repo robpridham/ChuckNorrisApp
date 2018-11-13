@@ -13,5 +13,11 @@ class HomeScreenView(private val view: View) {
             onPress()
         }
     }
+
+    fun setOnTextInputButtonPressed(onPress: ()->Unit) {
+        view.btn_text_input.setOnClickListener {
+            onPress()
+        }
+    }
 }
 

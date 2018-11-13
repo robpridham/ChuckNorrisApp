@@ -7,5 +7,7 @@ class LocalConfig {
     companion object {
         const val CN_SERVER_PRIMARY_URL = "https://api.icndb.com"
         const val CN_RANDOM_JOKES_ENDPOINT = "/jokes/random"
+        const val CN_PARAM_FIRST_NAME = "firstName"
+        const val CN_PARAM_LAST_NAME = "lastName"
     }
 }

@@ -8,34 +8,29 @@ import androidx.fragment.app.Fragment
 import com.robpridham.chucknorrisapp.ChuckNorrisApp
 import com.robpridham.chucknorrisapp.R
 import com.robpridham.chucknorrisapp.data.Joke
-import com.robpridham.chucknorrisapp.ui.view.HomeScreenView
-import com.robpridham.chucknorrisapp.ui.viewcontroller.HomeScreenViewController
-import com.robpridham.chucknorrisapp.ui.viewmodel.HomeScreenViewModel
+import com.robpridham.chucknorrisapp.ui.view.TextInputScreenView
+import com.robpridham.chucknorrisapp.ui.viewcontroller.TextInputScreenViewController
+import com.robpridham.chucknorrisapp.ui.viewmodel.TextInputViewModel
 
-class MainFragment: Fragment() {
+class TextInputFragment: Fragment() {
 
     companion object {
         private const val DIALOG_TAG_RANDOM_JOKE = "rj-dialog"
-        private const val DIALOG_TAG_TEXT_INPUT = "textinput"
     }
 
-    private lateinit var controller: HomeScreenViewController
+    private lateinit var controller: TextInputScreenViewController
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_home, container, false)
+        return inflater.inflate(R.layout.fragment_textinput, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val app = this.activity?.application as? ChuckNorrisApp
         app?.let {
-            val wrappedView = HomeScreenView(view)
-            val viewModel = app.getFragmentScopedViewModel<HomeScreenViewModel>(this)
-            this.controller = HomeScreenViewController(
-                viewModel,
-                wrappedView,
-                { joke -> showRandomJokeDialogFragment(joke) },
-                { showTextInputFragment() })
+            val wrappedView = TextInputScreenView(view)
+            val viewModel = app.getFragmentScopedViewModel<TextInputViewModel>(this)
+            this.controller = TextInputScreenViewController(viewModel, wrappedView) { joke -> showRandomJokeDialogFragment(joke) }
         }
     }
 
@@ -53,16 +48,6 @@ class MainFragment: Fragment() {
             bundle.putParcelable(RandomJokeDialogFragment.BUNDLE_KEY_JOKE, joke)
             dialogFragment.arguments = bundle
             dialogFragment.show(ft, DIALOG_TAG_RANDOM_JOKE)
-        }
-    }
-
-    private fun showTextInputFragment() {
-        fragmentManager?.let { fMgr ->
-            val ft = fMgr.beginTransaction()
-            ft.remove(this)
-            ft.replace(R.id.content_fragment, TextInputFragment(), DIALOG_TAG_TEXT_INPUT)
-            ft.addToBackStack(null)
-            ft.commit()
         }
     }
 }

@@ -9,7 +9,9 @@ import com.robpridham.chucknorrisapp.util.Success
 class HomeScreenViewController(
     private val homeScreenViewModel: HomeScreenViewModel,
     view: HomeScreenView,
-    createRandomJokeDialogCallback: (Joke)->Unit) {
+    createRandomJokeDialogCallback: (Joke) -> Unit,
+    showTextInputScreenCallback: () -> Unit
+) {
 
     init {
         view.setOnRandomJokeButtonPressed {
@@ -22,6 +24,10 @@ class HomeScreenViewController(
                     is Failure -> {}
                 }
             }
+        }
+
+        view.setOnTextInputButtonPressed {
+            showTextInputScreenCallback.invoke()
         }
     }
 }
