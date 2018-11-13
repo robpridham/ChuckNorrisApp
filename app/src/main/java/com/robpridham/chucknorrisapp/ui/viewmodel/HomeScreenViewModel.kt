@@ -1,6 +1,6 @@
 package com.robpridham.chucknorrisapp.ui.viewmodel
 
-import android.arch.lifecycle.ViewModel
+import androidx.lifecycle.ViewModel
 import com.robpridham.chucknorrisapp.data.JokeService
 import com.robpridham.chucknorrisapp.data.SingleJoke
 import com.robpridham.chucknorrisapp.util.Result

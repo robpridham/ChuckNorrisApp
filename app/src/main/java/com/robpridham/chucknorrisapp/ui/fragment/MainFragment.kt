@@ -1,10 +1,10 @@
 package com.robpridham.chucknorrisapp.ui.fragment
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import com.robpridham.chucknorrisapp.ChuckNorrisApp
 import com.robpridham.chucknorrisapp.R
 import com.robpridham.chucknorrisapp.data.Joke
@@ -29,7 +29,7 @@ class MainFragment: Fragment() {
         val app = this.activity?.application as? ChuckNorrisApp
         app?.let {
             val wrappedView = HomeScreenView(view)
-            val viewModel = app.viewModelFactory.create(HomeScreenViewModel::class.java)
+            val viewModel = app.getFragmentScopedViewModel<HomeScreenViewModel>(this)
             this.controller = HomeScreenViewController(viewModel, wrappedView) { joke -> showRandomJokeDialogFragment(joke) }
         }
     }

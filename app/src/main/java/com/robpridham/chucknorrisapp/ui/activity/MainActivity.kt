@@ -1,10 +1,10 @@
 package com.robpridham.chucknorrisapp.ui.activity
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import androidx.fragment.app.FragmentActivity
 import com.robpridham.chucknorrisapp.R
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : FragmentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

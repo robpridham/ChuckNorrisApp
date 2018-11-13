@@ -1,11 +1,10 @@
 package com.robpridham.chucknorrisapp.ui.viewmodel
 
-import android.arch.lifecycle.ViewModel
-import android.arch.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import com.robpridham.chucknorrisapp.ServiceContainer
-import java.lang.IllegalArgumentException
 
-class CNViewModelProviderFactory(private val serviceContainer: ServiceContainer): ViewModelProvider.Factory {
+class CNViewModelFactory(private val serviceContainer: ServiceContainer): ViewModelProvider.Factory {
 
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         when (modelClass) {
