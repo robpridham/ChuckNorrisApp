@@ -10,17 +10,17 @@ It attempts to demonstrate some key architectural principles such as:
 * separation for testability
 * single responsibility, dependency injection etc.
 * fragment-oriented design incorporating viewmodel, controller and view wrapper 
-* fragment lifecycle
+* fragment lifecycle and inter-fragment transitions
 * typical JSON & REST API interaction
 
 as well as basic Android design fundamentals.
 
 There's limited unit tests powered by Mockito.
 
-As of close of play on 12/11/18, only the first feature - 'Random Joke' - is operable. More will be added over time, availability permitting.
+As of close of play on 13/11/18, only the first two features - 'Random Joke' and 'Text Input' - are implemented. If time permits, the third will be attempted. 
 
-Major TODOs to incorporate remaining features are:
+Major TODOs to incorporate the remaining feature are:
 
-* Non-dialog fragment transitions
-* Text input and validation in support of 'text input' feature
-* RecyclerView & binding, potentially with `PagedList`, in support of never-ending list feature
+* Extension of the existing patterns to accommodate the third UI
+* RecyclerView and adapter, potentially with `PagedList`, in support of never-ending list feature
+* Further polish and review
